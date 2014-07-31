@@ -34,7 +34,7 @@ $query->order('dc.title ASC');
 $db->setQuery($query);
 
 $echoQuery = nl2br(str_replace('#__','tmqh_',$query));
-JFactory::getApplication()->enqueueMessage($echoQuery, 'notice');
+#JFactory::getApplication()->enqueueMessage($echoQuery, 'notice');
 #echo $echoQuery;
 #die;
 
