@@ -9,28 +9,21 @@
  */
 defined('_JEXEC') or die('Restricted access');
 
+$menuid 		= $params->get( 'relatedMenu' );
+$order_by		= $params->get( 'order_by', 'dc.created_on' );
+$direction		= $params->get( 'direction', 'asc' );
+
 $html = '';
 
 #$html = '<div class="moduletable'.$params->get( 'moduleclass_sfx' ).'">';
 
 $db=JFactory::getDbo();
 $query=$db->getQuery(true);
-/*
-$db->setQuery( "SELECT * FROM #__docman_categories" .
-					"\n WHERE enabled = 'com_docman'".
-					"\n ORDER BY ordering "
-                    );
-*/
 $query->select(array('dc.title', 'dc.docman_category_id AS id','dc.slug','dcr.ancestor_id','dcr.descendant_id','dcr.level'));
 $query->join('LEFT', '#__docman_category_relations AS dcr ON dc.docman_category_id=dcr.ancestor_id');
-
 $query->from('#__docman_categories AS dc');
-
-
-
 $query->where($db->quoteName('dc.enabled') . ' = 1 ');
-#$query->where($db->quoteName('dcr.level') . ' = 0 ');
-$query->order('dc.title ASC');
+$query->order($order_by .' ' .$direction);
 $db->setQuery($query);
 
 $echoQuery = nl2br(str_replace('#__','tmqh_',$query));
@@ -72,7 +65,7 @@ if (count($results))
 		
 
 // index.php?view=list&slug=training-1&option=com_docman&Itemid=360
-       	$url = JRoute::_( 'index.php?option=com_docman&amp;view=list&amp;slug='.$row['slug']);//.'&amp;Itemid=360' );
+       	$url = JRoute::_( 'index.php?option=com_docman&amp;view=list&amp;slug='.$row['slug'] .'&amp;Itemid=' . $menuid );
        	$html.='<li class="item-'.$row['id'].'"><a href="'.$url.'">';
 
 
