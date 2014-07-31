@@ -1,6 +1,8 @@
 joomla-modules
 =================================
 
+# Custom Joomla! Modules
+
 This repository contains custom modules for the Joomla! CMS created by JoomLadds @ River Media
 
 ## RM DOCman Categories
