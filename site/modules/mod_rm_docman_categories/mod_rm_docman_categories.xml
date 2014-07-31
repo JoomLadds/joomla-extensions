@@ -15,6 +15,42 @@
 	<config>
 		<fields name="params">
 			<fieldset name="basic">
+				<field
+					name="docman_version"
+					type="radio"
+					class="btn-group"
+					default="2"
+					label="DOCman Version"
+					description="Select the version of DOCman that is installed">
+						<option value="16">1.6.x</option>
+						<option value="2">2.x</option>
+				</field>
+				<field
+					name="relatedMenu"
+					type="menuitem"
+					default=""
+					required="true"
+					label="Select a menu item"
+					description="Select a menu item" />
+				<field
+					name="order_by"
+					type="list"
+					default="1"
+					label="Order by"
+					description="How do you want to order the results?">
+					<option value="dc.created_on">Creation Date</option>
+					<option value="dc.modified_on">Modification Date</option>
+					<option value="dc.title">Alphabetically</option>
+				</field>
+				<field
+					name="direction"
+					type="list"
+					default="1"
+					label="Direction"
+					description="How do you want to order the results?">
+					<option value="asc">Ascending</option>
+					<option value="desc">Descending</option>
+				</field>
 				<field name="show_icon" type="radio" default="0" label="Show icon" description="Displays a generic icon near the name of the document (feature not installed at this time)">
 					<option value="0">No</option>
 					<option value="1">Yes</option>
