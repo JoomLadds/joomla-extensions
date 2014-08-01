@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="2.5" client="site" method="upgrade">
+	<name>MOD_DOCMAN_MAJIX_XML_TITLE</name>
+	<author>Joomladds @ River Media</author>
+	<creationDate>July 2014</creationDate>
+	<copyright>Copyright (C) 2014 River Media. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>support@joomladds.com</authorEmail>
+	<authorUrl>http://joomladds.com</authorUrl>
+	<version>2.0.0</version>
+	<description>MOD_DOCMAN_MAJIX_XML_DESCRIPTION</description>
+    <files>
+		<filename module="mod_docman_majix">mod_docman_majix.php</filename>
+		<folder>tmpl</folder>
+    </files>
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.mod_docman_majix.ini</language>
+		<language tag="en-GB">en-GB/en-GB.mod_docman_majix.sys.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="custom">
+				<field
+					name="layout"
+					type="list"
+					default="default"
+					label="Module Type"
+					description="Choose either a Category layout, or a Popular Documents layout">
+						<option value="default">Categories</option>
+						<option value="popular">Popular</option>
+				</field>
+				<field
+					name="relatedMenu"
+					type="menuitem"
+					default=""
+					required="true"
+					label="Select a menu item"
+					description="Select a menu item" />
+				<field
+					name="order_by"
+					type="list"
+					default="1"
+					label="Order by"
+					description="How do you want to order the results?">
+					<option value="created_on">Creation Date</option>
+					<option value="modified_on">Modification Date</option>
+					<option value="title">Alphabetically</option>
+				</field>
+				<field
+					name="direction"
+					type="list"
+					default="1"
+					label="Direction"
+					description="How do you want to order the results?">
+					<option value="asc">Ascending</option>
+					<option value="desc">Descending</option>
+				</field>
+				<field
+					name="show_icon"
+					type="radio"
+					class="btn-group btn-group-yesno"
+					default="0"
+					label="Show document icon"
+					description="(OPTIONAL: If used as a Popular Module Only) Displays the document icon near the name of the document.">
+						<option value="0">No</option>
+						<option value="1">Yes</option>
+				</field>
+				<field
+					name="doc_ids"
+					type="textarea"
+					default=""
+					label="Document IDs"
+					description="(OPTIONAL: If used as a Popular Module Only) Enter the document ids that you would like to have shown. Seperate values with a comma." />
+			</fieldset>
+			<fieldset name="advanced">
+				<field
+					name="moduleclass_sfx"
+					type="text"
+					default=""
+					label="Module Class Suffix"
+					description="PARAMMODULECLASSSUFFIX" />
+			</fieldset>
+		</fields>
+	</config>
+</extension>
