@@ -17,6 +17,7 @@ jimport('joomla.filesystem.file');
 // show_icon = displays a generic icon near the name of the document, using the theme defined (default = 1) No=0; Yes=1
 // show_counter = displays the number of downloads (default = 1) No=0; Yes=1
 
+$html = '';
 $limits  		= $params->get( 'limits', 3 );
 $show_icon 		= $params->get( 'show_icon', 1 );
 $show_counter	= $params->get( 'show_counter', 1 );
@@ -39,7 +40,7 @@ if($docman_version=='2')
 	$db->setQuery($query);
 
 $echoQuery = nl2br(str_replace('#__','tmqh_',$query));
-JFactory::getApplication()->enqueueMessage($echoQuery, 'notice');
+#JFactory::getApplication()->enqueueMessage($echoQuery, 'notice');
 #echo $echoQuery;
 #die;
 
@@ -98,8 +99,6 @@ else
 		// get the parameters
 
 		$menuid = $_DOCMAN->getMenuId();
-
-		$html = '';
 
 		$rows = DOCMAN_Docs::getDocsByUserAccess(0, 'hits', 'DESC', $limits);
 
