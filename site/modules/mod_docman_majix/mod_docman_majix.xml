@@ -2,7 +2,7 @@
 <extension type="module" version="2.5" client="site" method="upgrade">
 	<name>MOD_DOCMAN_MAJIX_XML_TITLE</name>
 	<author>Joomladds @ River Media</author>
-	<creationDate>August 2014</creationDate>
+	<creationDate>November 2014</creationDate>
 	<copyright>Copyright (C) 2014 River Media. All rights reserved.</copyright>
 	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
 	<authorEmail>support@joomladds.com</authorEmail>
