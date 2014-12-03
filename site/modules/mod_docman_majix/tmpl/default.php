@@ -38,6 +38,9 @@ $echoQuery = nl2br(str_replace('#__','tmqh_',$query));
 
 $results = $db->loadAssocList();
 
+$testResults = array();
+$newResults = array();
+
 #echo '<pre>';
 #print_r($results);
 
@@ -58,10 +61,12 @@ if (count($results))
     	}
     	$i++;
     }
-
-#print_r($testResults);
-#print_r($newResults);
-#die;    
+/*
+echo '<pre>';
+print_r($testResults);
+print_r($newResults);
+die;
+*/   
     $html .='<ul class="menu'.$params->get( 'moduleclass_sfx' ).'">';
     foreach ($newResults as $row)
     {
