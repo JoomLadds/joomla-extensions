@@ -8,6 +8,8 @@
  * @link     	http://joomladds.com
  */
 
+defined('_JEXEC') or die;
+
 jimport('joomla.filesystem.file');
 jimport('joomla.filesystem.folder');
 
@@ -18,7 +20,7 @@ if(!JFolder::exists($docman_path)){
 	JError::raiseWarning( 404, JTEXT::_("MOD_DOCMAN_MAJIX_INSTALL_ERROR_1"));
 	return false;
 }
-
+    
 $docman_class = $docman_path . '/version.php';
 if(!JFile::exists($docman_class))
 {
@@ -27,8 +29,19 @@ if(!JFile::exists($docman_class))
 }
 else
 {
+$db = JFactory::getDbo();
+$query = $db->getQuery(true);
+$query
+    ->select($db->quoteName(array('manifest_cache')))
+    ->from($db->quoteName('#__extensions'))
+    ->where($db->quoteName('name') . ' = '. $db->quote('com_docman'));
+
+$db->setQuery($query);
+$results = $db->loadAssoc();
+
+$docman_manifest = json_decode($results['manifest_cache']);
 	include_once($docman_class);
-	$docman_version = ComDocmanVersion::getVersion();
+	$docman_version = $docman_manifest->version;
 }
 
 if($docman_version=='legacy')
